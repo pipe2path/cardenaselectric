@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="utf-8">
 <title>Electron - Responsive HTML5 Template</title>
@@ -1065,26 +1064,26 @@
 				</form>
 			</div>
 		</div> -->
-		<form id="subscribeform" method="post" novalidate="novalidate" action="#">
+		<form id="contact_form" method="post" novalidate="novalidate" action="#">
 			<div class="f-form" style="justify-content:left; display:block;">
 				<div class="form-row col-md-12" style="margin-left:0px">
 					<div class="form-group col-md-3">
 						<label for="name">Name</label>
-						<input type="text" class="form-control" id="contact-name" placeholder="Enter Name">
+						<input type="text" class="form-control" id="contact-name" name="contact-name" placeholder="Enter Name">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="exampleInputEmail1">Email Address</label>
-						<input type="email" class="form-control" id="contact-email" aria-describedby="emailHelp" placeholder="Enter email">
+						<input type="email" class="form-control" id="contact-email" name="contact-email" aria-describedby="emailHelp" placeholder="Enter email">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="name">Phone Number</label>
-						<input type="text" class="form-control" id="contact-phone" placeholder="Enter phone number">
+						<input type="text" class="form-control" id="contact-phone" name="contact-phone" placeholder="Enter phone number">
 					</div>
 				</div>
 				<div class="form-row col-md-12" style="margin-left:0px">
 					<div class="form-group col-md-11">
 						<label for="comment">Comments</label>
-						<textarea class="form-control" rows="5" id="contact-comment" placeholder="Enter comments"></textarea>
+						<textarea class="form-control" rows="5" id="contact-comment" name="contact-comment" placeholder="Enter comments"></textarea>
 					</div>
 				</div>
 				<div class="form-row col-md-12" style="margin-left:0px">
@@ -1154,8 +1153,34 @@
 	</div>
 </div>
 </footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
 <script async src="js/bundle.js"></script>
+
+
+<script>
+	// Attach a submit handler to the form
+	$( "#contact_form" ).submit(function( event ) {
+	 
+	  // Stop form from submitting normally
+	  event.preventDefault();
+	 
+	  // Get some values from elements on the page:
+	  var $form = $( this ),
+		name = $("#contact-name" ).val(),
+		phone = $("#contact-phone").val();
+		email = $("#contact-email").val(),
+		comments = $("#contact-comment").val(),
+		url = $form.attr( "action" );
+	 
+	  // Send the data using post
+	  var posting = $.post( url, { name: name, phone: phone, email: email, comments: comments } );
+	 
+	  // Put the results in a div
+	  posting.done(function( data ) {
+		 console.log(data);
+	  });
+	});
+</script>
 
 
 <!-- modal - Make an Appointment -->
