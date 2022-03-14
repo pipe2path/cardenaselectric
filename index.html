@@ -610,10 +610,23 @@
 	</div>
 </div>
 </footer>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
 <script async src="js/bundle.js"></script>
 <script>
+	// re-captcha
+	var onSubmit = function(token) {
+	  console.log('success!');
+	};
+
+	var onloadCallback = function() {
+	  grecaptcha.render('submit', {
+		'sitekey' : '6LdcKt4eAAAAALMLWE5TiswjGakj3hrYONrieIgY',
+		'callback' : onSubmit
+	  });
+	};
+	
 	// Attach a submit handler to the form
  	$( "#contact_form").validate({
 		submitHandler: function(form) {
