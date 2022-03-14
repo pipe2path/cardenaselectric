@@ -560,6 +560,7 @@
 				<div class="form-row col-md-12" style="margin-left:0px">
 					<div class="f-form__btn col-md-2">
 						<button id="submitbtn" class="tt-btn btn__color02" type="submit"><span class="icon-482948 tt-icon-left"></span>Send &nbsp<span class="tt-short-text"> now</span></button>
+						<div class="g-recaptcha" data-sitekey="6LdcKt4eAAAAALMLWE5TiswjGakj3hrYONrieIgY"></div>
 						<!--<input id="submitbtn" type="submit" value="Send now"/>-->
 					</div>
 				</div>
@@ -610,23 +611,11 @@
 	</div>
 </div>
 </footer>
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
 <script async src="js/bundle.js"></script>
 <script>
-	// re-captcha
-	var onSubmit = function(token) {
-	  console.log('success!');
-	};
-
-	var onloadCallback = function() {
-	  grecaptcha.render('submitbtn', {
-		'sitekey' : '6LdcKt4eAAAAALMLWE5TiswjGakj3hrYONrieIgY',
-		'callback' : onSubmit
-	  });
-	};
-	
 	// Attach a submit handler to the form
  	$( "#contact_form").validate({
 		submitHandler: function(form) {
