@@ -535,7 +535,7 @@
 <footer id="tt-footer">
 	<div class="footer-wrapper">
 	<div class="container container-lg-fluid container-lg__no-gutters">
-		<form id="contact_form" name="contact_form" method="post" novalidate="novalidate" action="https://mzs-email-service.herokuapp.com/contactform/send"> 
+		<form id="contact_form" name="contact_form" method="post" novalidate="novalidate" action="https://mzs-email-service.herokuapp.com/send"> 
 			<div class="f-form" style="justify-content:left; display:block;">
 				<div class="form-row col-md-12" style="margin-left:0px">
 					<div class="form-group col-md-3">
@@ -566,7 +566,7 @@
 					</div>	
 				</div>
 				<div class="form-row col-md-12" style="margin-left:0px">
-					<div class="col-md-2">
+					<div class="form-group col-md-2">
 						<button id="submitbtn" class="tt-btn btn__color02" type="submit"><span class="icon-482948 tt-icon-left"></span>Send &nbsp<span class="tt-short-text"> now</span></button>
 					</div>
 				</div>
@@ -624,7 +624,9 @@
 	// Attach a submit handler to the form
  	$( "#contact_form").validate({
 		submitHandler: function(form) {
-			form.submit()
+			let answer= $('#antispam-question').val();
+			if (answer == 4)
+				form.submit()
 		}
 	});
 	
