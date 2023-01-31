@@ -557,17 +557,18 @@
 						<textarea class="form-control" rows="5" id="contact-comment" name="comments" placeholder="Enter comments" required></textarea>
 					</div>
 				</div>
-				<div class="form-row col-md-12" style="margin-left:0px">
+				<!-- <div class="form-row col-md-12" style="margin-left:0px">
 					<div class="form-group col-md-3">
 						<label for="question">How many legs does a horse have?</label>
 					</div>
 					<div class="form-group col-md-1">
 						<input type="text" class="form-control" id="antispam-question" name="antispam" placeholder="">
 					</div>	
-				</div>
+				</div> -->
 				<div class="form-row col-md-12" style="margin-left:0px">
 					<div class="form-group col-md-2">
-						<button id="submitbtn" class="tt-btn btn__color02" type="submit"><span class="icon-482948 tt-icon-left"></span>Send &nbsp<span class="tt-short-text"> now</span></button>
+						<!-- <button id="submitbtn" class="tt-btn btn__color02" type="submit"><span class="icon-482948 tt-icon-left"></span>Send &nbsp<span class="tt-short-text"> now</span></button> -->
+						<button class="g-recaptcha" data-sitekey="6LdcKt4eAAAAALMLWE5TiswjGakj3hrYONrieIgY" data-callback='onSubmit' data-action='submit'>Submit</button>
 					</div>
 				</div>
 			</div>
@@ -620,15 +621,21 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
 <script async src="js/bundle.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
 <script>
 	// Attach a submit handler to the form
- 	$( "#contact_form").validate({
+ 	<!-- $( "#contact_form").validate({
 		submitHandler: function(form) {
 			let answer= $('#antispam-question').val();
 			if (answer == 4)
 				form.submit()
 		}
-	});
+	}); -->
+	
+	function onSubmit(token) {
+     alert('reached onSubmit');
+     document.getElementById("contact-form").submit();
+	}
 	
 </script>
 
