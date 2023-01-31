@@ -624,15 +624,7 @@
 <script src="https://www.google.com/recaptcha/api.js"></script>
 <script>
 	// Attach a submit handler to the form
- 	<!-- $( "#contact_form").validate({
-		submitHandler: function(form) {
-			let answer= $('#antispam-question').val();
-			if (answer == 4)
-				form.submit()
-		}
-	}); -->
-	
-	function onSubmit(token) {
+ 	function onSubmit(token) {
      alert('reached onSubmit');
      document.getElementById("contact-form").submit();
 	}
