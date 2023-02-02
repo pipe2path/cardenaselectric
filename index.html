@@ -9,6 +9,7 @@
 		<meta name="format-detection" content="telephone=no">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1">
 		<link rel="stylesheet" href="css/style.css">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 	</head>
 <body>
@@ -535,7 +536,7 @@
 <footer id="tt-footer">
 	<div class="footer-wrapper">
 	<div class="container container-lg-fluid container-lg__no-gutters">
-		<form id="contact_form" name="contact_form" method="post" novalidate="novalidate" action="https://mzs-email-service.herokuapp.com/send"> 
+		<form id="contact_form" class="needs-validation" name="contact_form" method="post" novalidate="novalidate" action="https://mzs-email-service.herokuapp.com/send"> 
 			<div class="f-form" style="justify-content:left; display:block;">
 				<div class="form-row col-md-12" style="margin-left:0px">
 					<div class="form-group col-md-3">
@@ -548,7 +549,7 @@
 					</div>
 					<div class="form-group col-md-4">
 						<label for="name">Phone Number</label>
-						<input type="text" class="form-control" id="contact-phone" name="phone" placeholder="Enter phone number" rangelength="[2,10]">
+						<input type="text" class="form-control" id="contact-phone" name="phone" placeholder="Enter phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
 					</div>
 				</div>
 				<div class="form-row col-md-12" style="margin-left:0px">
@@ -557,16 +558,8 @@
 						<textarea class="form-control" rows="5" id="contact-comment" name="comments" placeholder="Enter comments" required></textarea>
 					</div>
 				</div>
-				<!-- <div class="form-row col-md-12" style="margin-left:0px">
-					<div class="form-group col-md-3">
-						<label for="question">How many legs does a horse have?</label>
-					</div>
-					<div class="form-group col-md-1">
-						<input type="text" class="form-control" id="antispam-question" name="antispam" placeholder="">
-					</div>	
-				</div> -->
 				<div class="form-row col-md-12" style="margin-left:0px">
-					<div class="form-group col-md-2">
+					<div class="form-group col-md-3">
 						<!-- <button id="submitbtn" class="tt-btn btn__color02" type="submit"><span class="icon-482948 tt-icon-left"></span>Send &nbsp<span class="tt-short-text"> now</span></button> -->
 						<button class="g-recaptcha" data-sitekey="6LdcKt4eAAAAALMLWE5TiswjGakj3hrYONrieIgY" data-callback='onSubmit' data-action='submit'>Submit</button>
 					</div>
@@ -622,11 +615,25 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
 <script async src="js/bundle.js"></script>
 <script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script>
 	// Attach a submit handler to the form
- 	function onSubmit(token) {
-     document.getElementById("contact_form").submit();
-	}
+ 	//function onSubmit(token) {
+    // document.getElementById("contact_form").submit();
+	//}
+	
+	var forms = document.querySelectorAll('.needs-validation')
+	Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
 	
 </script>
 
