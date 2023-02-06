@@ -628,13 +628,15 @@
 		var name = document.getElementById("contact-name");
 		var phone = document.getElementById("contact-phone");
 		var validPhone = /^\d{10}$/;
-		if (name='irracle' || !(phone.value.match(validPhone))) {
+		if (!phone.value.match(validPhone)) {
           event.preventDefault()
           event.stopPropagation()
         }
 		else{
-			form.classList.add('was-validated')
-			form.submit();
+			if (grecaptcha.getResponse() != ""){
+				form.classList.add('was-validated')
+				form.submit();
+			}
 		}
 	}
 
