@@ -626,7 +626,7 @@
  	function submitContactForm() {
 		var form = document.getElementById("contact_form");
 		var phone = document.getElementById("contact-phone");
-		var validPhone = /^\d{10}$/;
+		var validPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 		if (!phone.value.match(validPhone) || grecaptcha.getResponse() == "") {
 			event.preventDefault()
 			event.stopPropagation()
