@@ -631,11 +631,11 @@
 			if (phone.match(validPhone)) {
 				form.classList.add('was-validated')
 				form.submit();
-			} else {
-				event.preventDefault()
-				event.stopPropagation()		
-			}
-		}
+				return;
+			} 
+		} 
+		event.preventDefault()
+		event.stopPropagation()		
 	}
 
 </script>
