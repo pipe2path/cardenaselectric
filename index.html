@@ -625,7 +625,7 @@
 	// Attach a submit handler to the form
  	function submitContactForm() {
 		var form = document.getElementById("contact_form");
-		var phone = document.getElementById("contact-phone");
+		var phone = document.getElementById("contact-phone").value;
 		var validPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 		if (!phone.value.match(validPhone) || grecaptcha.getResponse() == "") {
 			event.preventDefault()
