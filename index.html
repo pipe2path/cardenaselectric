@@ -628,13 +628,12 @@
 		var phone = document.getElementById("contact-phone").value;
 		var validPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 		if (grecaptcha.getResponse() != "") {
-			if (!phone.value.match(validPhone)) {
-				event.preventDefault()
-				event.stopPropagation()
-			}
-			else {
+			if (phone.match(validPhone)) {
 				form.classList.add('was-validated')
 				form.submit();
+			} else {
+				event.preventDefault()
+				event.stopPropagation()		
 			}
 		}
 	}
